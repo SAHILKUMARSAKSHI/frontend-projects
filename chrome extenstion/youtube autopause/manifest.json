@@ -1,0 +1,17 @@
+{
+    "name": "YouTube AutoPause",
+    "version": "1.0",
+    "description": "Autopause YouTube videos when changing tabs",
+    "manifest_version": 3,
+    "content_scripts": [
+      {
+        "matches": ["*://www.youtube.com/*"],
+        "js": ["contentScript.js"]
+      }
+    ],
+    "background": {
+      "scripts": ["backgroundScript.js"],
+      "persistent": false
+    },
+    "permissions": ["activeTab", "tabs"]
+  }

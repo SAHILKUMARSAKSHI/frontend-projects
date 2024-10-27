@@ -1,0 +1,267 @@
+@font-face {  font-family: 'Godzilla'; src: url("font/GodzillaMoviefont-pp4R.ttf"); }
+* {
+    margin: 0;
+    padding: 0;
+    transition: .3s;
+    box-sizing: border-box;
+    color: #fff;
+    text-decoration: none;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+body {
+    background-position: center;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-image: url('media/bg.jpg');
+    min-height: 100vh;
+}
+
+body::before {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+    width: 40%;
+    background: linear-gradient(to right, transparent, #000);
+}
+
+.container {
+    max-width: 1600px;
+    margin: auto;
+    position: relative;
+    min-height: 90vh;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+    opacity: 0;
+    animation: FadeIn 1s linear forwards;
+}
+
+.navbar .left {
+    display: flex;
+    align-items: center;
+}
+
+.navbar .logo img {
+    width: 50px;
+    margin-right: 60px;
+}
+
+.navbar ul {
+    display: flex;
+    list-style-type: none;
+}
+
+.navbar ul a {
+    display: block;
+    padding: 8px 20px;
+    color: #dcdcdc;
+}
+
+.navbar ul a:hover {
+    color: #08a5da;
+    text-decoration: underline;
+}
+
+.navbar .right button {
+    font-size: 20px;
+    background: transparent;
+    height: 40px;
+    width: 40px;
+    border: 0;
+    margin: 0 20px;
+    cursor: pointer;
+    border-radius: 99px;
+} 
+
+.navbar .right button:hover {
+    background: #08a5da;
+}
+
+.main-content {
+    margin-top: 60px;
+    padding: 0 6rem;
+}
+
+.main-content h1,
+.main-content h2 {
+    font-family: 'Godzilla';
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #08a5da;
+    opacity: 0;
+    animation: FadeIn 1s linear forwards;
+    animation-delay: 600ms;
+}
+
+
+.main-content h1 {
+    font-size: 15rem;
+    line-height: 170px;
+}
+
+.main-content h2 {
+    font-size: 7rem;
+}
+
+.main-content .divider {
+    margin-top: 40px;
+    margin-bottom: 40px;
+    width: 40%;
+    border-color: #dcdcdc30;
+}
+
+.main-content .about-card {
+    max-width: 40%;
+    line-height: 30px;
+    opacity: 0;
+    animation: FadeIn 1s linear forwards;
+    animation-delay: 1s;
+}
+
+.main-content .about-container {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    opacity: 0;
+    animation: FadeIn 1s linear forwards;
+    animation-delay: 1.3s;
+}
+
+.main-content .about-card p {
+    color: #dcdcdc90;
+    text-transform: capitalize;
+}
+
+.main-content .video {
+    height: 200px;
+    width: 300px;
+    background-image: url('media/clip.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0.4;
+}
+
+.main-content .video i {
+    font-size: 60px;
+}
+
+.slide-control {
+    position: absolute;
+    left: 0;
+    top: 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    height: 100%;
+    opacity: 0;
+    animation: FadeIn 1s linear forwards;
+    animation-delay: 1s;
+}
+
+.slide-control .line {
+    height: 70%;
+    background: #dcdcdc3a;
+    width: 2px;
+    border-radius: 99px;
+}
+
+.slide-control .line .inner-line {
+    height: 30%;
+    background: #fff;
+}
+
+.slide-control .next {
+    text-transform: uppercase;
+    transform: rotate(90deg);
+    font-weight: 900;
+}
+
+.slide-control .slide-button {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.slide-control .slide-button button {
+    height: 60px;
+    width: 60px;
+    border-radius: 99px;
+    background: #fff;
+    border: 0;
+    cursor: pointer;
+}
+
+.slide-control .slide-button button i {
+    color: #000;
+    font-size: 36px;
+}
+
+.slide-control .slide-button button:focus {
+    background: #08a5da;
+}
+
+.slide-control .slide-button button:focus i {
+    color: #fff;
+}
+
+.sponsors {
+    display: flex;
+    gap: 50px;
+    position: absolute;
+    bottom: 0;
+    left: 110px;
+    opacity: 0;
+    animation: FadeIn 1s linear forwards;
+    animation-delay: 1s;
+}
+
+.sponsors img {
+    width: fit-content;
+    height: 30px;
+}
+
+.social-links {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translate(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    opacity: 0;
+    animation: FadeIn 1s linear forwards;
+    animation-delay: 1.3s;
+}
+
+.social-links a {
+    height: 50px;
+    width: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 99px;
+    background: #dcdcdc4b;
+    font-size: 22px;
+}
+
+.social-links a:hover {
+    background: #08a5da;
+}
+
+@keyframes FadeIn {
+    from { opacity: 0; transform: translateY(0); }    
+    to { opacity: 1; transform: translateY(-5px); }    
+}

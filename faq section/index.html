@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ</title>
+    <!-- CSS File  -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Bootstrap Icon  -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="heading">FAQ</h1>
+        <div data-ani-delay="600ms" class="faq-container">
+            <div class="faq-content">
+                <div class="question">
+                    <div class="text">
+                        Lorem ipsum dolor sit amet.
+                    </div>
+                    <div class="icon bi bi-caret-right-fill"></div>
+                </div>
+                <div class="answer">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor illo quae asperiores harum quis totam. Vero similique pariatur accusantium dolorum officiis aut minima, voluptatem saepe quae doloremque, molestias aperiam nulla!
+                </div>
+            </div>
+        </div>
+
+        <div data-ani-delay="900ms" class="faq-container">
+            <div class="faq-content">
+                <div class="question">
+                    <div class="text">
+                        Lorem ipsum dolor sit amet.
+                    </div>
+                    <div class="icon bi bi-caret-right-fill"></div>
+                </div>
+                <div class="answer">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor illo quae asperiores harum quis totam. Vero similique pariatur accusantium dolorum officiis aut minima, voluptatem saepe quae doloremque, molestias aperiam nulla!
+                </div>
+            </div>
+        </div>
+
+        <div data-ani-delay="1200ms" class="faq-container">
+            <div class="faq-content">
+                <div class="question">
+                    <div class="text">
+                        Lorem ipsum dolor sit amet.
+                    </div>
+                    <div class="icon bi bi-caret-right-fill"></div>
+                </div>
+                <div class="answer">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor illo quae asperiores harum quis totam. Vero similique pariatur accusantium dolorum officiis aut minima, voluptatem saepe quae doloremque, molestias aperiam nulla!
+                </div>
+            </div>
+        </div>
+
+        <!-- <div data-ani-delay="1400ms" class="faq-container">
+            <div class="faq-content">
+                <div class="question">
+                    <div class="text">
+                        Lorem ipsum dolor sit amet.
+                    </div>
+                    <div class="icon bi bi-caret-right-fill"></div>
+                </div>
+                <div class="answer">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor illo quae asperiores harum quis totam. Vero similique pariatur accusantium dolorum officiis aut minima, voluptatem saepe quae doloremque, molestias aperiam nulla!
+                </div>
+            </div>
+        </div> -->
+    </div>
+
+    <script>
+        var button = document.querySelectorAll(".question");
+        var faqContainer = document.querySelectorAll(".faq-container");
+
+        faqContainer.forEach((i) => {
+            var delay = i.getAttribute("data-ani-delay");
+            i.style.animationDelay = delay;
+        })
+
+
+        button.forEach((btn) => {
+            btn.addEventListener("click", (event) => {
+                var ClickedQuestion = event.target;
+                var content = ClickedQuestion.parentNode;
+                var contentRect = content.getBoundingClientRect();
+                var container = content.parentNode;
+                var Icon = ClickedQuestion.querySelector(".icon");
+
+                if (container.style.height) {
+                    container.style.height = null;
+                    Icon.classList.remove("rotate");
+                } else {
+                    container.style.height = contentRect.height + "px";
+                    Icon.classList.add("rotate");
+
+                }
+
+            })
+        })
+
+    </script>
+</body>
+</html>

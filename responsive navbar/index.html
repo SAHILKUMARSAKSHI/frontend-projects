@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glassmorphism Navbar</title>
+    <!-- CSS File  -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Bootstrap Icons  -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <a href="#" class="logo">
+                LOGO
+            </a>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Products</a></li>
+                <li><a href="#">Services</a></li>
+                <li><a href="#">Plans</a></li>
+            </ul>
+            <div class="links">
+                <a href="#" class="active">Sign up</a>
+                <a href="#">Login</a>
+            </div>
+            <button class="bi bi-list menu-button"></button>
+        </div>
+    </nav>
+
+    <script>
+        const headerRect = document.querySelector(".container").getBoundingClientRect();
+        const button = document.querySelector(".menu-button")
+
+        button.addEventListener("click", (event) => {
+            var navbar = document.querySelector(".navbar");
+            if (navbar.style.height) {
+                navbar.style.height = null;
+                event.target.classList.replace("bi-x", "bi-list");
+            } else {
+                navbar.style.height = `${headerRect.height + 60}px`;
+                event.target.classList.replace("bi-list", "bi-x");
+            }
+        })
+    </script>
+</body>
+</html>

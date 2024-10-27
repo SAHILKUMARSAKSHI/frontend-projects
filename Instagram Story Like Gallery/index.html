@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Instagram Story Like Gallery</title>
+    <style>
+        *,
+        *:before,
+        *:after {
+            padding: 0;
+            margin: 0;
+            border: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #121418;
+            background-size: 5vw 5vw;
+            background-image: linear-gradient(to right, transparent calc(100% - 1px), rgba(255, 255, 255, 0.1)), linear-gradient(to bottom, transparent calc(100% - 1px), rgba(255, 255, 255, 0.1));
+            background-position: center;
+            display: grid;
+            place-items: center;
+            min-height: 100vh;
+            color: #ccc;
+            font-family: sans-serif;
+            font-size: 18px;
+        }
+
+        .story {
+            position: relative;
+            border-radius: 1rem;
+            overflow: hidden;
+            aspect-ratio: 9/16;
+        }
+
+        .story img {
+            display: none;
+        }
+
+        .story img.active {
+            display: block;
+        }
+
+        .story__bubbles {
+            --count: 0;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            display: grid;
+            grid-template-columns: repeat(var(--count), 1fr);
+            padding: 0.5rem;
+            gap: 0.25rem;
+        }
+
+        .story__bubble {
+            width: 100%;
+            height: 6px;
+            border-radius: 3px;
+            background-color: rgba(255, 255, 255, 0.5);
+            box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.3);
+        }
+
+        .story__bubble:has(~ .story__bubble--active) {
+            background: #fff;
+        }
+
+        .story__bubble--active {
+            background: #fff;
+        }
+    </style>
+
+</head>
+
+<body translate="no">
+    <div class="story"><img src="https://picsum.photos/id/100/360/640" /><img
+            src="https://picsum.photos/id/200/360/640" /><img src="https://picsum.photos/id/300/360/640" /><img
+            src="https://picsum.photos/id/400/360/640" /><img src="https://picsum.photos/id/500/360/640" /><img
+            src="https://picsum.photos/id/600/360/640" />
+    </div>
+
+    <script id="rendered-js">
+        class Story {
+            constructor(element) {
+                this.current = 0;
+                this.story = element;
+                this.images = this.story.querySelectorAll('img');
+                this.images[0].classList.add('active');
+                this.story.addEventListener('click', this.handleClick.bind(this));
+                this.bubbles = [];
+
+                this.initBubbles();
+                this.bubbles[0].classList.add('story__bubble--active');
+            }
+
+            initBubbles() {
+                let bubbleBox = document.createElement('div');
+                bubbleBox.classList.add('story__bubbles');
+                bubbleBox.style.setProperty('--count', this.images.length);
+
+                this.images.forEach(img => {
+                    let imgBubble = document.createElement('div');
+                    imgBubble.classList.add('story__bubble');
+                    bubbleBox.append(imgBubble);
+                    this.bubbles.push(imgBubble);
+                });
+
+                this.story.prepend(bubbleBox);
+            }
+
+            handleClick(e) {
+                let { x } = e;
+                let box = this.story.getBoundingClientRect();
+                let percent = 100 / box.width * (x - box.left);
+                if (percent > 50) {
+                    this.current++;
+                    if (this.current >= this.images.length)
+                        this.current = 0;
+                } else {
+                    this.current--;
+                    if (this.current < 0)
+                        this.current = this.images.length - 1;
+                }
+
+                this.images.forEach((img, i) => {
+                    if (i == this.current) {
+                        img.classList.add('active');
+                    } else {
+                        img.classList.remove('active');
+                    }
+                });
+                this.bubbles.forEach((bubble, i) => {
+                    if (i == this.current) {
+                        bubble.classList.add('story__bubble--active');
+                    } else {
+                        bubble.classList.remove('story__bubble--active');
+                    }
+                });
+            }
+        }
+
+
+        console.clear();
+        new Story(document.querySelector('.story'));
+    </script>
+
+
+</body>
+
+</html>
